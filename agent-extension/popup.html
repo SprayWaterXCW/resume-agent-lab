@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>Resume Agent Lab</title><link rel="stylesheet" href="popup.css"></head>
+<body><main><p class="eyebrow">RESUME AGENT LAB / 0.1.7</p><h1>模型选择下一步</h1>
+<p id="page" class="muted"></p><p id="profile" class="muted">读取资料状态…</p>
+<div class="row"><button id="edit">编辑资料</button><button id="import">导入资料备份</button><input id="file" type="file" accept=".json" hidden></div>
+<button id="setup" class="secondary">打开模型设置与学习面板</button><button id="demo" class="secondary" hidden>载入虚构测试资料</button>
+<label>填写模式<select id="mode"><option value="overwrite">全部覆盖（默认）</option><option value="empty">只填空白</option></select></label>
+<label><input id="day" type="checkbox"> 我确认：经历日期缺少日时按当月 1 日补全</label>
+<button id="start">开始填写此标签页</button><div class="row"><button id="stop" hidden>停止任务</button><button id="resume" hidden>已核对，继续 Agent</button></div>
+<p id="status" role="status" aria-live="polite">等待开始</p><p id="metrics" class="muted"></p>
+<details id="coverage-panel" hidden><summary>查看未填写原因</summary><ul id="coverage"></ul>
+<button id="configure-gaps" class="secondary">补充本页缺失资料</button></details>
+<p class="boundary">每项动作都由模型选择并经过校验。切换标签页后继续操作原文档。不会自动提交、保存或勾选声明；网页仍可手动操作。</p>
+<div class="row"><h2>执行记录</h2><button id="copy" class="secondary">复制本次记录</button></div><ol id="events"></ol>
+<p id="error" role="alert"></p></main><script src="popup.js"></script></body></html>

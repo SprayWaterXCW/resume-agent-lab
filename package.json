@@ -1,0 +1,23 @@
+{
+  "name": "resume-agent-lab",
+  "version": "0.1.7",
+  "private": true,
+  "type": "module",
+  "description": "Model-directed resume form agent with LangGraph and a normal Chrome tool bridge",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node service/main.mjs",
+    "build:extension": "node scripts/build-extension.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "demo:scripted": "node scripts/evaluate.mjs",
+    "eval:live": "node scripts/evaluate.mjs --live",
+    "verify:baseline": "node scripts/verify-baseline.mjs"
+  },
+  "dependencies": {
+    "@langchain/core": "1.2.17",
+    "@langchain/langgraph": "1.4.20",
+    "ws": "8.22.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": { "esbuild": "0.28.2", "jsdom": "26.1.0" }
+}

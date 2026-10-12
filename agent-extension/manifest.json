@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Resume Agent Lab · 模型自主决策",
+  "version": "0.1.7",
+  "description": "LangGraph 状态与模型逐步选工具；普通 Chrome 简历填写，禁止自动提交。",
+  "minimum_chrome_version": "116",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp5LsWGSSFPmHWio2jl44u/SspFYDJb5r7Kmz4JdbYxYbrJIXMRjIqQrJkghXl6QN0dmNnoFRtLRzZZvu0EDTSmuOZpAqKT9cJk/okHhrgJfG3XmSG+uT+YK35xlj5tWWkEcRJ3VAyAe3YnhSr8SRdk8mzOA6SLsWpek4byXLI9UX4M8+5Eqpkd+dW85xiFa6oAkNoHzkVwkWXQPF0rijB0/FTZ4lo7kCRdv+fAf7yYTsDUZeEm1b1yh4AflHZvRqi2/nDTMs8atlBfGZkEXNdaeVtQPy4xbt79JAWQNmwATrYc6Fa0hy05pqUjHq14yeuQsyTdo2fRfcv/vWEbxaVwIDAQAB",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "dist/worker.js",
+    "type": "module"
+  },
+  "options_ui": {
+    "page": "profile-editor.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_title": "Resume Agent Lab",
+    "default_popup": "popup.html"
+  }
+}

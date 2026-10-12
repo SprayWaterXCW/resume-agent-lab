@@ -1,0 +1,12 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>虚构招聘网页 · Agent Lab</title><link rel="stylesheet" href="/style.css"></head>
+<body><main class="practice"><header><p class="eyebrow">FICTIONAL RECRUITMENT / NO SUBMISSION</p><h1>观察 Agent 怎样填写</h1><p>在 Chrome 打开实验扩展，载入虚构资料，然后点击「开始填写此标签页」。页面只供本地实验。</p><a href="/">返回设置与学习面板</a></header>
+<p id="business-state" class="status" aria-live="polite">业务状态：已接收 0 个字段 · 教育 1 组</p>
+<section data-agent-group class="card"><h2>基本信息</h2><div class="form-field"><label for="full-name">姓名</label><input id="full-name" data-key="fullName"></div><div class="form-field"><label for="email">邮箱</label><input id="email" data-key="email" type="email"></div></section>
+<section data-agent-group id="education" class="card"><h2>教育经历</h2><div id="entries"><article data-agent-entry>
+<div class="form-field"><label for="school-0">毕业学校</label><input id="school-0" data-key="school"></div>
+<div class="form-field"><label for="major-0">所学专业</label><input id="major-0" data-key="major"></div>
+</article></div><button type="button" id="add-education">添加教育经历</button></section>
+<section data-agent-group class="card"><h2>其他信息</h2><div class="form-field"><label for="answer">你希望如何开展工作？</label><input id="answer" data-key="customQuestion"></div><p class="muted">虚构资料里没有这个答案，Agent 应明确记录缺少资料。</p></section>
+<section data-agent-group class="card"><h2>有关声明</h2><label><input type="checkbox" id="declaration">同意相关声明</label><p class="muted">声明由用户处理。本地表单没有提交接口。</p></section>
+<section class="card"><h2>页面业务状态</h2><p class="muted">下面显示输入事件进入页面状态后的接收数量，可以检查「看起来写入」与「页面确实接收」是否一致。该实验不代表真实招聘服务器验收。</p><ul id="accepted"></ul></section>
+</main><script src="/practice.js"></script></body></html>

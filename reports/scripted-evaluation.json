@@ -1,0 +1,413 @@
+{
+  "mode": "scripted_model_test_double",
+  "date": "2026-10-07T06:26:35.429Z",
+  "runtime": "@langchain/langgraph",
+  "browserEnvironment": "in-memory fictional form metadata; no real Chrome or recruitment server",
+  "elapsedMs": 80,
+  "supportedExpectedFields": 6,
+  "verifiedSupportedFields": 6,
+  "fullSupportedCoverage": true,
+  "forcedControlFailure": true,
+  "modelSelectedRetry": true,
+  "modelSelectedExpansion": true,
+  "result": {
+    "agentRuntime": "langgraph_model_directed",
+    "submissionPolicy": "agent_actions_only",
+    "serverAcceptance": "not_checked",
+    "code": "MODEL_FINISHED",
+    "agentWrittenFields": 6,
+    "agentAddedCards": 1,
+    "modelCalls": 14,
+    "decisionCalls": 12,
+    "mappingCalls": 2,
+    "expectedFields": 7,
+    "observedFields": 7,
+    "remainingBlankFields": 1,
+    "remainingMappedFields": 0,
+    "unresolvedCount": 0,
+    "unplannedCount": 1,
+    "pendingEntries": 0,
+    "auditCurrent": true,
+    "verificationCounts": {
+      "inputStateVerified": 6,
+      "controlReadbackOnly": 0,
+      "inputStateMismatch": 0
+    },
+    "fillMode": "overwrite"
+  },
+  "status": "partial",
+  "events": [
+    {
+      "step": 1,
+      "phase": "观察",
+      "tool": "observe",
+      "code": "OBSERVED"
+    },
+    {
+      "step": 2,
+      "phase": "决策",
+      "tool": "model",
+      "code": "DECISION_STARTED"
+    },
+    {
+      "step": 3,
+      "phase": "决策",
+      "tool": "plan_fields",
+      "code": "MODEL_SELECTED_TOOL"
+    },
+    {
+      "step": 4,
+      "phase": "执行",
+      "tool": "plan_fields",
+      "code": "TOOL_STARTED"
+    },
+    {
+      "step": 5,
+      "phase": "反馈",
+      "tool": "plan_fields",
+      "code": "PLAN_VALIDATED"
+    },
+    {
+      "step": 6,
+      "phase": "观察",
+      "tool": "observe",
+      "code": "OBSERVED"
+    },
+    {
+      "step": 7,
+      "phase": "决策",
+      "tool": "model",
+      "code": "DECISION_STARTED"
+    },
+    {
+      "step": 8,
+      "phase": "决策",
+      "tool": "add_entry",
+      "code": "MODEL_SELECTED_TOOL"
+    },
+    {
+      "step": 9,
+      "phase": "执行",
+      "tool": "add_entry",
+      "code": "TOOL_STARTED"
+    },
+    {
+      "step": 10,
+      "phase": "反馈",
+      "tool": "add_entry",
+      "code": "ENTRY_ADDED"
+    },
+    {
+      "step": 11,
+      "phase": "观察",
+      "tool": "observe",
+      "code": "STRUCTURE_CHANGED"
+    },
+    {
+      "step": 12,
+      "phase": "观察",
+      "tool": "observe",
+      "code": "OBSERVED"
+    },
+    {
+      "step": 13,
+      "phase": "决策",
+      "tool": "model",
+      "code": "DECISION_STARTED"
+    },
+    {
+      "step": 14,
+      "phase": "决策",
+      "tool": "plan_fields",
+      "code": "MODEL_SELECTED_TOOL"
+    },
+    {
+      "step": 15,
+      "phase": "执行",
+      "tool": "plan_fields",
+      "code": "TOOL_STARTED"
+    },
+    {
+      "step": 16,
+      "phase": "反馈",
+      "tool": "plan_fields",
+      "code": "PLAN_VALIDATED"
+    },
+    {
+      "step": 17,
+      "phase": "观察",
+      "tool": "observe",
+      "code": "OBSERVED"
+    },
+    {
+      "step": 18,
+      "phase": "决策",
+      "tool": "model",
+      "code": "DECISION_STARTED"
+    },
+    {
+      "step": 19,
+      "phase": "决策",
+      "tool": "fill_field",
+      "code": "MODEL_SELECTED_TOOL"
+    },
+    {
+      "step": 20,
+      "phase": "执行",
+      "tool": "fill_field",
+      "code": "TOOL_STARTED"
+    },
+    {
+      "step": 21,
+      "phase": "反馈",
+      "tool": "fill_field",
+      "code": "VERIFIED"
+    },
+    {
+      "step": 22,
+      "phase": "观察",
+      "tool": "observe",
+      "code": "OBSERVED"
+    },
+    {
+      "step": 23,
+      "phase": "决策",
+      "tool": "model",
+      "code": "DECISION_STARTED"
+    },
+    {
+      "step": 24,
+      "phase": "决策",
+      "tool": "fill_field",
+      "code": "MODEL_SELECTED_TOOL"
+    },
+    {
+      "step": 25,
+      "phase": "执行",
+      "tool": "fill_field",
+      "code": "TOOL_STARTED"
+    },
+    {
+      "step": 26,
+      "phase": "反馈",
+      "tool": "fill_field",
+      "code": "VERIFIED"
+    },
+    {
+      "step": 27,
+      "phase": "观察",
+      "tool": "observe",
+      "code": "OBSERVED"
+    },
+    {
+      "step": 28,
+      "phase": "决策",
+      "tool": "model",
+      "code": "DECISION_STARTED"
+    },
+    {
+      "step": 29,
+      "phase": "决策",
+      "tool": "fill_field",
+      "code": "MODEL_SELECTED_TOOL"
+    },
+    {
+      "step": 30,
+      "phase": "执行",
+      "tool": "fill_field",
+      "code": "TOOL_STARTED"
+    },
+    {
+      "step": 31,
+      "phase": "反馈",
+      "tool": "fill_field",
+      "code": "VERIFIED"
+    },
+    {
+      "step": 32,
+      "phase": "观察",
+      "tool": "observe",
+      "code": "OBSERVED"
+    },
+    {
+      "step": 33,
+      "phase": "决策",
+      "tool": "model",
+      "code": "DECISION_STARTED"
+    },
+    {
+      "step": 34,
+      "phase": "决策",
+      "tool": "fill_field",
+      "code": "MODEL_SELECTED_TOOL"
+    },
+    {
+      "step": 35,
+      "phase": "执行",
+      "tool": "fill_field",
+      "code": "TOOL_STARTED"
+    },
+    {
+      "step": 36,
+      "phase": "反馈",
+      "tool": "fill_field",
+      "code": "READBACK_MISMATCH"
+    },
+    {
+      "step": 37,
+      "phase": "观察",
+      "tool": "observe",
+      "code": "OBSERVED"
+    },
+    {
+      "step": 38,
+      "phase": "决策",
+      "tool": "model",
+      "code": "DECISION_STARTED"
+    },
+    {
+      "step": 39,
+      "phase": "决策",
+      "tool": "retry_field",
+      "code": "MODEL_SELECTED_TOOL"
+    },
+    {
+      "step": 40,
+      "phase": "执行",
+      "tool": "retry_field",
+      "code": "TOOL_STARTED"
+    },
+    {
+      "step": 41,
+      "phase": "反馈",
+      "tool": "retry_field",
+      "code": "VERIFIED"
+    },
+    {
+      "step": 42,
+      "phase": "观察",
+      "tool": "observe",
+      "code": "OBSERVED"
+    },
+    {
+      "step": 43,
+      "phase": "决策",
+      "tool": "model",
+      "code": "DECISION_STARTED"
+    },
+    {
+      "step": 44,
+      "phase": "决策",
+      "tool": "fill_field",
+      "code": "MODEL_SELECTED_TOOL"
+    },
+    {
+      "step": 45,
+      "phase": "执行",
+      "tool": "fill_field",
+      "code": "TOOL_STARTED"
+    },
+    {
+      "step": 46,
+      "phase": "反馈",
+      "tool": "fill_field",
+      "code": "VERIFIED"
+    },
+    {
+      "step": 47,
+      "phase": "观察",
+      "tool": "observe",
+      "code": "OBSERVED"
+    },
+    {
+      "step": 48,
+      "phase": "决策",
+      "tool": "model",
+      "code": "DECISION_STARTED"
+    },
+    {
+      "step": 49,
+      "phase": "决策",
+      "tool": "fill_field",
+      "code": "MODEL_SELECTED_TOOL"
+    },
+    {
+      "step": 50,
+      "phase": "执行",
+      "tool": "fill_field",
+      "code": "TOOL_STARTED"
+    },
+    {
+      "step": 51,
+      "phase": "反馈",
+      "tool": "fill_field",
+      "code": "VERIFIED"
+    },
+    {
+      "step": 52,
+      "phase": "观察",
+      "tool": "observe",
+      "code": "OBSERVED"
+    },
+    {
+      "step": 53,
+      "phase": "决策",
+      "tool": "model",
+      "code": "DECISION_STARTED"
+    },
+    {
+      "step": 54,
+      "phase": "决策",
+      "tool": "audit",
+      "code": "MODEL_SELECTED_TOOL"
+    },
+    {
+      "step": 55,
+      "phase": "执行",
+      "tool": "audit",
+      "code": "TOOL_STARTED"
+    },
+    {
+      "step": 56,
+      "phase": "反馈",
+      "tool": "audit",
+      "code": "AUDIT_FINISHED"
+    },
+    {
+      "step": 57,
+      "phase": "观察",
+      "tool": "observe",
+      "code": "OBSERVED"
+    },
+    {
+      "step": 58,
+      "phase": "决策",
+      "tool": "model",
+      "code": "DECISION_STARTED"
+    },
+    {
+      "step": 59,
+      "phase": "决策",
+      "tool": "finish",
+      "code": "MODEL_SELECTED_TOOL"
+    },
+    {
+      "step": 60,
+      "phase": "执行",
+      "tool": "finish",
+      "code": "TOOL_STARTED"
+    },
+    {
+      "step": 61,
+      "phase": "反馈",
+      "tool": "finish",
+      "code": "MODEL_FINISHED"
+    },
+    {
+      "step": 62,
+      "phase": "完成",
+      "tool": "review",
+      "code": "MODEL_FINISHED"
+    }
+  ]
+}
