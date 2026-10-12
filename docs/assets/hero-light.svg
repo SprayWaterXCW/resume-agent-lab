@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="380" viewBox="0 0 1280 380" role="img" aria-labelledby="title desc">
+<title id="title">Resume Agent Lab</title>
+<desc id="desc">Illustrated model-directed loop with human review.</desc>
+<defs><linearGradient id="background" x2="1" y2="1"><stop stop-color="#f1f5ff"/><stop offset="1" stop-color="#f7f4fe"/></linearGradient></defs>
+<rect width="1280" height="380" rx="24" fill="url(#background)"/>
+<circle cx="1208" cy="42" r="146" fill="#7752cb" opacity=".06"/><circle cx="704" cy="373" r="108" fill="#7752cb" opacity=".05"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<rect x="54" y="44" width="42" height="42" rx="13" fill="#7752cb"/>
+<circle cx="67" cy="61" r="3" fill="#ffffff"/><circle cx="82" cy="61" r="3" fill="#ffffff"/>
+<path d="M66 70 Q75 77 84 70" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+<text x="112" y="69" font-size="12" font-weight="700" letter-spacing="1.2" fill="#52627d">MODEL-DIRECTED / EXPERIMENTAL</text>
+<text x="54" y="150" font-size="49" font-weight="700" letter-spacing="-1.8" fill="#18233e">Resume Agent Lab</text>
+<text x="56" y="196" font-size="23" fill="#18233e">A thoughtful next step. Every time.</text>
+<text x="56" y="228" font-size="17" fill="#52627d">Observe. Choose a tool. Verify. Repeat.</text>
+<rect x="56" y="274" width="130" height="35" rx="17.5" fill="#eee7fc"/><text x="121.0" y="296" text-anchor="middle" font-size="13" font-weight="600" fill="#7752cb">LangGraph</text>
+<rect x="196" y="274" width="138" height="35" rx="17.5" fill="#eee7fc"/><text x="265.0" y="296" text-anchor="middle" font-size="13" font-weight="600" fill="#7752cb">Your Chrome</text>
+<rect x="344" y="274" width="126" height="35" rx="17.5" fill="#eee7fc"/><text x="407.0" y="296" text-anchor="middle" font-size="13" font-weight="600" fill="#7752cb">You review</text>
+<rect x="730" y="47" width="496" height="286" rx="17" fill="#ffffff" stroke="#dae2f1"/><text x="754" y="80" font-size="12" font-weight="600" fill="#52627d">THE MODEL CHOOSES THE NEXT TOOL</text>
+<rect x="754" y="102" width="210" height="70" rx="11" fill="#f1f5ff" stroke="#dae2f1"/><text x="770" y="126" font-size="11" fill="#7752cb">01</text><text x="770" y="151" font-size="18" font-weight="600" fill="#18233e">Observe</text>
+<rect x="990" y="102" width="210" height="70" rx="11" fill="#f1f5ff" stroke="#dae2f1"/><text x="1006" y="126" font-size="11" fill="#7752cb">02</text><text x="1006" y="151" font-size="18" font-weight="600" fill="#18233e">Choose</text>
+<rect x="990" y="193" width="210" height="70" rx="11" fill="#f1f5ff" stroke="#dae2f1"/><text x="1006" y="217" font-size="11" fill="#7752cb">03</text><text x="1006" y="242" font-size="18" font-weight="600" fill="#18233e">Act</text>
+<rect x="754" y="193" width="210" height="70" rx="11" fill="#f1f5ff" stroke="#dae2f1"/><text x="770" y="217" font-size="11" fill="#7752cb">04</text><text x="770" y="242" font-size="18" font-weight="600" fill="#18233e">Verify</text>
+<g stroke="#7752cb" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M970 137 h13 m-4 -4 l4 4 l-4 4"/><path d="M1095 179 v7 m-4 -3 l4 4 l4 -4"/>
+<path d="M983 228 h-13 m4 -4 l-4 4 l4 4"/><path d="M859 187 v-7 m-4 3 l4 -4 l4 4"/></g>
+<circle cx="761" cy="301" r="4" fill="#56b798"/><text x="775" y="305" font-size="12" fill="#52627d">Human review is part of the loop.</text>
+</g></svg>

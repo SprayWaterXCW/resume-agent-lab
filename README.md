@@ -1,125 +1,187 @@
+<div align="center">
+
 # Resume Agent Lab
 
-独立的简历填写 Agent 实验项目。当前版本 **0.1.7**：模型决定下一项工具，LangGraph 管理状态和循环；支持主动检查控件、逐项未填写原因和暂停后补资料，区分页面控件未初始化与资料缺失。年薪投影与观察协议共享类型定义；首次观察失败保留脱敏的阶段与校验位置。
+**一个会观察、选择下一步，也会请你帮忙的简历助手。**
 
-本项目目录：`~/Downloads/ARIS/RESUME_AGENT_LAB`。已经可用的插件基线仍在 `../RESUME_AGENT`，Mac 安装工程仍在 `../RESUME_FILL_MAC`。本项目没有复制你的资料库或 API 配置，也没有修改这两个目录。
+在普通 Chrome 中运行，用 LangGraph 管理状态，让模型决定接下来做什么。
 
-## 先理解我们改了什么
+[简体中文](README.md) · [English](README.en.md)
 
-以前的真实网页运行：程序确定「规划、遍历字段、添加、复查」的顺序，LLM 提供映射。
+![agent: v0.1.7](docs/assets/badge-version.svg)
+![LangGraph: 1.4.20](docs/assets/badge-langgraph.svg)
+![Node.js: 22+](docs/assets/badge-node.svg)
+![status: experimental](docs/assets/badge-status.svg)
 
-现在的真实运行入口：每轮模型看到当前字段、可靠资料路径、上轮操作结果和剩余预算，选择一个工具。工具完成后重新观察，再把结果交给模型。LLM 可以决定填写、添加、重试、复核、等待或暂停的顺序。
+[快速开始](#quick-start) · [试一张表](#try-it) · [Agent 如何工作](#how-it-works) · [常见问题](#faq)
 
-LangGraph 的外层循环和安全限制仍由代码定义。Agent 的自主性来自**工具选择和顺序由模型决定**。把状态图画出来或装上一个库，本身不足以证明这一点。
+</div>
 
-本项目参考 Browser Use 的动作循环、结构化输出、结果反馈与页面变化校验。当前使用自己的普通 Chrome 工具桥接；真实网页入口没有调用 Python Browser Use SDK。
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/hero-dark.svg">
+  <img src="docs/assets/hero-light.svg" alt="Resume Agent Lab：模型在观察、选择工具、执行与验证之间循环，也可以暂停请求用户核对。示意图。" width="100%">
+</picture>
 
-## 启动与使用
+## 👋 表格变了，下一步也应该跟着变
 
-需要 Node.js 22 或更高版本、普通 Chrome。本机已有这些环境。另一个 Mac 的稳定插件仍使用之前的 Mac 安装包；这个实验项目暂时采用开发方式运行。
+简历页面常常不会按预想展开：学校需要先搜索、添加经历后字段才出现，某个下拉菜单还没加载好，而你也可能漏填了一项资料。
 
-```sh
-cd ~/Downloads/ARIS/RESUME_AGENT_LAB
-npm install --cache /private/tmp/resume-agent-lab-npm-cache
+这个实验项目让模型根据眼前的页面和上一步反馈，决定 **先检查控件、填写一项、添加经历、短暂等待，还是请你补充信息**。执行后重新观察，再决定下一步。
+
+**目前是可从源码运行的实验版。** 已接通真实 Chrome 填写链路，复杂控件与跨网站覆盖仍在完善。每项结果都需要检查，不能把一次成功动作当作整张简历已完成。
+
+## ✨ 一个更会配合你的助手
+
+| 能力 | 使用时能感受到什么 |
+| --- | --- |
+| 🧠 模型选择工具与顺序 | 根据页面反馈决定下一步，而不是照着一份固定填写清单走到底 |
+| 🔎 先检查陌生控件 | 观察已支持的选项、控件协议和就绪状态，再决定如何处理 |
+| 📚 使用你维护的资料 | 从可靠来源路径取值；缺少独立答案时请你补充 |
+| 🧾 可读的执行记录 | 看到简短决策摘要、工具动作、执行反馈和未填写原因 |
+| 🙋 暂停后继续 | 请求核对时补齐资料，点击「已核对，继续 Agent」重新观察并继续 |
+| 🧭 绑定原页面 | 切换标签页后继续处理原文档；页面刷新或跳转时停止旧任务 |
+
+资料编辑器支持基本信息、家庭成员、多段经历、语言、证书、获奖、竞赛和自定义问答。运行时默认 **全部覆盖**，也可选择 **只填空白**。
+
+### 我该选哪个项目？
+
+| 你现在想做什么 | 项目 |
+| --- | --- |
+| 使用已经积累较多真实表单修复的填写插件 | [Resume Autofill](https://github.com/SprayWaterXCW/resume-autofill-extension) |
+| 观察、学习或扩展模型自主决策的填写 Agent | **Resume Agent Lab · 本仓库** |
+
+两者使用独立的扩展、资料库和端口。可以导出自己的资料备份再导入另一个项目。
+
+<a id="quick-start"></a>
+## 🚀 快速开始
+
+准备 **Node.js 22+、Chrome 116+**，以及支持 OpenAI 兼容工具调用的模型 API。目前主要在 **macOS** 上验证。
+
+### 1. 下载、构建、启动
+
+```bash
+git clone https://github.com/SprayWaterXCW/resume-agent-lab.git
+cd resume-agent-lab
+npm ci
 npm run build:extension
 npm start
 ```
 
-打开 [设置与学习面板](http://127.0.0.1:4175/)。服务默认只监听 `127.0.0.1:4175`。
+服务地址是 **[127.0.0.1:4175](http://127.0.0.1:4175/)**。`npm start` 在当前终端运行，请保留这个终端；按 `Ctrl+C` 停止服务。
 
-1. 在设置网页填写自己的 Base URL、模型名称、API Key，保存后可测试一次工具调用。
-2. Chrome 打开 `chrome://extensions`，开启开发者模式，加载本项目的 `agent-extension` 文件夹。
-3. 固定扩展 **Resume Agent Lab · 模型自主决策**，打开其「编辑资料」网页填写资料，或导入已有插件导出的资料备份。
-4. 打开目标简历表单，点击这个实验扩展的 **开始填写此标签页**。默认全部覆盖，也可选只填空白。
-5. 在扩展中查看「模型选择 / 执行 / 反馈」记录。任务请求人工核对时，可以停止，也可以「已核对，继续 Agent」。继续时会重新观察原文档。
+### 2. 在网页里配置模型
 
-原插件与实验扩展有独立 ID、独立资料库和服务端口。使用时通过名称选择对应入口。
+打开 [模型设置面板](http://127.0.0.1:4175/)，填写并保存：
 
-### 先在虚构招聘页面体验
+| 项目 | 填什么 |
+| --- | --- |
+| Base URL | 服务商的 OpenAI 兼容 API 基础地址 |
+| 模型名称 | 该服务商提供的实际模型 ID |
+| API Key | 你自己的模型密钥 |
 
-打开 [虚构招聘网页](http://127.0.0.1:4175/practice)，在这个页面打开实验扩展，点击「载入虚构测试资料」，再点击正常的「开始填写此标签页」。虚构资料有两段教育经历，页面最初只有一张教育卡片，还有一个资料未提供的问题。
+Base URL 使用基础地址，避免填完整的 `/chat/completions` 路径。保存后可以测试一次工具调用；测试会请求模型并可能产生费用。
 
-页面显示「业务状态已接收字段数」，这个状态通过 input/change 事件更新，帮助观察输入框显示与页面状态之间的区别。它不连接招聘服务器，也不证明真实网站保存或提交会接受字段。
+### 3. 加载扩展，准备资料
 
-### 行为边界
+1. Chrome 地址栏输入 `chrome://extensions`，开启 **「开发者模式」**。
+2. 点击 **「加载已解压的扩展程序」**，选择仓库中的 `agent-extension` 文件夹。
+3. 固定 **Resume Agent Lab · 模型自主决策**。
+4. 打开扩展，点击 **「编辑资料」**，填写并保存资料；也可以导入自己的备份。
 
-- 模型没有提交、投递、保存、签名、勾选声明、跳转、任意点击或执行任意脚本的工具。
-- 网页按钮和网络请求仍可由你正常使用。
-- 切换标签页后任务继续操作启动时的标签页。原文档被刷新、跳转或关闭后任务停止，旧动作不会重放。
-- 每项写入来自已验证的资料路径。缺少信息会明确保留空白；缺少资料不清空已有内容。
-- 同一写入最多尝试两次，默认最多 120 轮决策、200 次写入尝试、20 次添加。
-- 请求重试失败控件、添加经历和重新规划都由模型选择；程序只执行获准的动作。
+<a id="try-it"></a>
+## 🧪 先试一张轻松的表
 
-## 已实现的结构
+打开 **[虚构招聘表单](http://127.0.0.1:4175/practice)**，在扩展中点击 **「载入虚构测试资料」**，再点击 **「开始填写此标签页」**。
+
+演示资料有两段教育经历，页面最初只有一张卡片，还特意留了一个资料没有提供的问题。你可以看看 Agent 会如何选择工具、添加卡片，以及在哪些地方需要你补充。
+
+> [!NOTE]
+> 「载入虚构测试资料」会更换此扩展当前使用的资料。已有个人资料时，请先在编辑器导出备份；试用结束后可导入恢复。
+
+### 然后，再去你的真实表单
+
+**确认个人资料 → 打开简历编辑页 → 选择填写模式 → 开始 → 查看执行记录 → 核对结果。**
+
+需要补资料时，打开 **「查看未填写原因」**，使用 **「补充本页缺失资料」**。若任务进入人工核对状态，完成核对后点击 **「已核对，继续 Agent」**。Agent 会重新观察原页面，不会直接重放旧动作。
+
+**你掌握最后一步。** Agent 没有保存、提交、投递、签名、接受声明或任意跳转的工具。网页原有按钮与网络请求可由你正常使用。刷新、跳转或关闭原页面会结束该页任务。
+
+<a id="how-it-works"></a>
+## 🧠 Agent 如何选择下一步？
+
+每轮，模型收到页面观察、可靠资料目录、上次工具反馈和剩余预算。它从明确的工具集合中选一个动作；程序检查参数、来源和文档身份，再执行并重新观察。**LangGraph 管理循环、状态与人工暂停，模型决定工具和顺序。**
 
 ```mermaid
-flowchart TD
-  A[Chrome 开始填写] --> B[原文档绑定与资料账本]
-  B --> C[观察字段和来源目录]
-  C --> D[LLM 选择工具]
-  D --> E[Zod 动作解析与策略校验]
-  E --> F[执行前重新观察]
-  F --> G[可靠网页工具]
-  G --> C
-  E --> H[LangGraph 人工暂停]
-  H -->|用户继续| C
-  D --> I[结束并报告实测覆盖]
+flowchart LR
+    O[观察页面] --> D[模型选择下一工具]
+    D --> V[来源与文档校验]
+    V --> A[执行受限工具]
+    A --> F[反馈与验证]
+    F --> O
+    D --> R[请求人工核对]
+    R --> H[补资料或核对]
+    H --> O
+    D --> E[结束并报告]
 ```
 
-| 组件 | 代码 | 职责 |
-| --- | --- | --- |
-| Agent 状态图 | `src/agent/graph.mjs` | 状态、条件边、循环、检查点、人工中断 |
-| 动作模型 | `src/agent/model.mjs` | 每轮真实 LLM 工具调用 |
-| 工具契约 | `src/agent/tools.mjs` | 九类工具、参数格式、批量输出兼容 |
-| 策略校验 | `src/agent/policy.mjs` | 可靠来源、已完成凭据、预算、过期观察 |
-| Chrome 桥接 | `service/bridge.mjs` | 本地 WebSocket 与反向 RPC |
-| 浏览器入口 | `agent-extension/src/worker.js` | 文档归属、私有资料、实际工具执行 |
-| 填写工具 | `agent-extension/src/real-tab.js` 等 | 复用 0.7.28 控件和页面事件提交实现 |
-| 资料与映射校验 | `src/core` | 资料证据、经历索引、字段语义和规划契约 |
+运行时会自动刷新观察。模型可选择九种工具：`inspect_field`、`plan_fields`、`fill_field`、`retry_field`、`add_entry`、`audit`、`wait`、`request_review`、`finish`。
 
-模型可能一次返回多项工具调用。最多接受八项，全部检查格式；当前只执行模型返回的第一项，其他动作明确记录为延后。后续动作需要新的观察和新的模型选择。
+本项目参考 [Browser Use](https://github.com/browser-use/browser-use) 的动作循环、结构化输出、工具反馈与页面变化校验。真实填写由本项目的 Chrome 桥接和 LangGraph 运行，采用 JavaScript 实现。
 
-## 验证方法与范围
+<a id="faq"></a>
+## 💬 常见问题
 
-```sh
+<details>
+<summary><strong>为什么扩展装好了，还需要本地服务？</strong></summary>
+
+Chrome 扩展负责观察与操作页面，本地 Node.js 服务负责模型调用和 LangGraph 状态。先运行 `npm start`，再打开扩展。4175 是本项目端口；另一插件使用 4174。
+
+</details>
+
+<details>
+<summary><strong>我的资料和 API Key 会怎样使用？</strong></summary>
+
+资料值保存在 Chrome 的本地资料账本中，并在选定字段的执行器内取出。模型使用页面标签、结构、选项和资料路径目录进行决策，不接收真实简历值。API Key 保存在本机 `.local/config.json`；`.local` 与 `.env.local` 被 Git 忽略。模型请求由你选择的服务商处理，费用与网络要求按该服务商计算。
+
+</details>
+
+<details>
+<summary><strong>为什么有的字段还是没填？</strong></summary>
+
+看「未填写原因」：可能缺少独立答案、来源存在歧义、控件未就绪，或执行未通过验证。Agent 可以选择检查、等待、重试或请求帮助，但不能保证修复所有页面控件。特殊组件、iframe、Shadow DOM 和上传字段仍需要进一步适配。页面回读正确也不代表服务器已保存，请检查网站自己的结果。
+
+</details>
+
+<details>
+<summary><strong>执行记录展示的是完整思维过程吗？</strong></summary>
+
+展示的是模型提供的简短决策摘要、所选工具、执行反馈和程序验证结果，方便你理解与追踪一次任务。它不会展示模型内部的完整思维链。
+
+</details>
+
+<details>
+<summary><strong>源码更新以后怎么重新使用？</strong></summary>
+
+运行 `npm ci` 和 `npm run build:extension`，在 Chrome 扩展页点击「重新加载」，再重启本地服务。模型设置和资料在各自的本地存储中保留；迁移电脑前先导出资料备份。
+
+</details>
+
+## 🛠️ 想继续学习或参与？
+
+| 方向 | 入口 |
+| --- | --- |
+| 从工作流到 Agent，理解每一层 | [第一课](docs/lessons/01-from-workflow-to-agent.md) |
+| Browser Use 的参考流程与实现差异 | [架构对照](docs/browser-use-comparison.md) |
+| 控件观察、反馈与缺失资料 | [第二课](docs/lessons/02-browser-readiness-and-tool-feedback.md) · [第三课](docs/lessons/03-control-inspection-and-profile-review.md) |
+| 计划中的能力 | [路线图](docs/roadmap.md) |
+| 历史开发与验证范围 | [开发历史](docs/development-history.md) · [验证报告](reports/) |
+| 代码来源与引用 | [来源说明](docs/source-provenance.md) |
+
+```bash
 npm test
 npm run demo:scripted
-npm run eval:live
-npm run verify:baseline
 ```
 
-- `npm test`：Agent 边界与状态、人工中断、工具反馈、本地服务和 WebSocket 的自动检查。
-- `demo:scripted`：明确使用脚本模型替身，检验控制结构；结果不会标成 LLM 成绩。
-- `eval:live`：使用设置页保存的模型，运行同一个虚构元数据环境。会发出真实 API 请求；没有操作 Chrome 或招聘服务器。
-- `verify:baseline`：对原插件归档中的 206 个文件比对 SHA-256，确认保留的基线未被实验工作改动。
+这些检查使用虚构资料与测试模型；`npm run eval:live` 则调用你配置的真实模型，可能产生费用。测试通过不能代替真实网站验收。`verify:baseline` 是本地归档对照工具，需要历史插件目录，独立克隆本仓库时无需运行。
 
-2026-10-07 首轮记录详见 `reports/milestone-01.md`。真实模型在虚构环境中填写六个有来源的字段，遇到强制失败后选择了重试，还添加并填写了第二段教育经历。
-
-随后在普通 Chrome 的真实招聘页通过正常工具栏入口复测，修复了页面长期 `loading` 时启动挂起、原生单选问题重复建模和下拉选项匹配问题。早期真实覆盖见 `reports/chrome-startup-0.1.4.md`，缺失分类见 `reports/chrome-gap-repair-0.1.5.md`，最新就绪诊断和暂停实测见 [0.1.6 报告](reports/chrome-gap-repair-0.1.6.md)。最新真实运行在 55 个字段中核验写入 20 项，2 项有资料但未完成，33 项缺少独立答案或来源待核对，并保持人工暂停。这属于真实填写链路的部分验证；没有执行招聘网站的保存、下一步或提交，不能据此宣称网站服务器已接收完整简历。
-
-### 补充网页缺少的答案
-
-扩展的“查看未填写原因”区分已有资料未核验、执行失败、页面控件未初始化、字典未加载、日期精度不足和缺少独立答案。点击“补充本页缺失资料”可以打开带问题清单的资料编辑器。教育经历增加校区；求职偏好增加独立年薪、可实习日期、轮班、无尘车间、岗位调剂、职业规划等配置。陌生问题可建立带题目原文的自定义问答草稿，答案由用户填写和保存。
-
-Agent 暂停后可以修改资料，点击“已核对，继续 Agent”恢复同一次 LangGraph 运行。资料版本改变会使旧计划和核验结果失效，Agent 重新观察和规划。当前暂停恢复依赖服务进程中的内存检查点，重启服务需重新开始。
-
-0.1.7 修复了补充独立年薪后首次观察失败的问题。根因、诊断边界及正常工具栏复测见 [启动协议修复报告](reports/chrome-observation-contract-0.1.7.md)。
-
-## 隐私与配置
-
-简历值留在扩展的本地资料账本中。Node 服务、模型输入和 LangGraph 状态只处理字段元数据、资料路径与操作凭据。设置网页不会读回密钥，日志不会保存密钥或原始模型响应。
-
-模型设置位于本项目 `.local/config.json`，目录权限 0700、文件权限 0600；这是本地权限保护，尚未使用 macOS Keychain 加密。`.local`、`.env.local` 和实时评估报告已加入 Git 忽略。
-
-检查点使用 LangGraph `MemorySaver`。同一进程和浏览器连接中的人工暂停可以恢复；服务重启、连接中断后不能续跑。下一阶段将讨论持久检查点与重新绑定文档的协议。
-
-## 一边做一边学
-
-- `docs/lessons/01-from-workflow-to-agent.md`：本阶段详细讲解。
-- `docs/lessons/02-browser-readiness-and-tool-feedback.md`：真实网页就绪、问题与选项建模、工具反馈和复核分层。
-- `docs/lessons/03-control-inspection-and-profile-review.md`：控件检查、缺失资料分类、组件工具与人工补充恢复。
-- `docs/browser-use-comparison.md`：与 Browser Use 的源码逐项对照和后续差距。
-- `docs/roadmap.md`：分阶段实施与验收标准。
-- `docs/source-provenance.md`：复用代码、冻结基线与调研版本。
-
-下一阶段继续完善真实控件覆盖、规划上下文管理与页面业务状态验证，再引入跨进程持久恢复与更多跨站评估案例。
+欢迎 [提交问题与建议](https://github.com/SprayWaterXCW/resume-agent-lab/issues)，或从一个具体控件的复现开始贡献。复用代码的原始 GPL-3.0 许可证保留在 [src/vendor/formfill](src/vendor/formfill/README.md) 中；横幅是流程示意图。
