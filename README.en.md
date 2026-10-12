@@ -13,7 +13,7 @@ Your everyday Chrome. A model choosing tools. LangGraph keeping track.
 ![Node.js: 22+](docs/assets/badge-node.svg)
 ![status: experimental](docs/assets/badge-status.svg)
 
-[Quick start](#quick-start) · [Try a form](#try-it) · [How it works](#how-it-works) · [FAQ](#faq)
+[Quick start](#quick-start) · [Try a form](#try-it) · [How it works](#how-it-works) · [FAQ](#faq) · [Authors](#authors)
 
 </div>
 
@@ -165,6 +165,18 @@ They show brief model decision summaries, selected tools, execution feedback, an
 Run `npm ci` and `npm run build:extension`, reload the extension in Chrome, and restart the service. Model settings and profiles remain in their respective local stores. Export your profile before migrating to another computer.
 
 </details>
+
+<a id="authors"></a>
+## ✍️ Authors & development partners
+
+**SprayWaterXCW × Codex**: learning by building, we are extending a useful resume-filling plugin into an agent that chooses its next step from page feedback.
+
+| Author | Contribution |
+| --- | --- |
+| **[SprayWaterXCW](https://github.com/SprayWaterXCW)** · Creator, author & maintainer | Product direction, learning goals, real recruitment-site testing, feedback, and keeping development focused on the agent |
+| **Codex (OpenAI)** · AI co-author & development partner | Research into reference projects, agent architecture, tools, debugging, tests, documentation, and technical explanations |
+
+More partners are welcome. [GitHub Contributors](https://github.com/SprayWaterXCW/resume-agent-lab/graphs/contributors) is generated from account-linked commits; the table above also credits AI collaboration on this project.
 
 ## 🛠️ Keep learning, or build with us
 

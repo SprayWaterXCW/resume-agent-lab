@@ -13,7 +13,7 @@
 ![Node.js: 22+](docs/assets/badge-node.svg)
 ![status: experimental](docs/assets/badge-status.svg)
 
-[快速开始](#quick-start) · [试一张表](#try-it) · [Agent 如何工作](#how-it-works) · [常见问题](#faq)
+[快速开始](#quick-start) · [试一张表](#try-it) · [Agent 如何工作](#how-it-works) · [常见问题](#faq) · [作者](#authors)
 
 </div>
 
@@ -165,6 +165,18 @@ Chrome 扩展负责观察与操作页面，本地 Node.js 服务负责模型调�
 运行 `npm ci` 和 `npm run build:extension`，在 Chrome 扩展页点击「重新加载」，再重启本地服务。模型设置和资料在各自的本地存储中保留；迁移电脑前先导出资料备份。
 
 </details>
+
+<a id="authors"></a>
+## ✍️ 作者与开发搭档
+
+**SprayWaterXCW × Codex**：一边做，一边学，把一个实用的简历填写插件逐步拓展成会根据页面反馈选择下一步的 Agent。
+
+| 作者 | 在项目里做了什么 |
+| --- | --- |
+| **[SprayWaterXCW](https://github.com/SprayWaterXCW)** · 发起人、作者与维护者 | 确定产品方向和学习目标，测试真实招聘网站，提供反馈并推动 Agent 主线 |
+| **Codex（OpenAI）** · AI 联合作者与开发搭档 | 调研参考项目，参与 Agent 架构、工具实现、问题排查、测试、文档与技术讲解 |
+
+欢迎更多伙伴加入。[GitHub Contributors](https://github.com/SprayWaterXCW/resume-agent-lab/graphs/contributors) 根据关联账号的提交自动统计；上表也记录了本项目的 AI 协作贡献。
 
 ## 🛠️ 想继续学习或参与？
 
